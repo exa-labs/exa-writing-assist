@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 231, 231, 245;
+  --background-end-rgb: 255, 255, 255;
+
+  /* COLORS */
+  --brand-default: #254bf1;
+  --brand-fainter: #e7ebfd;
+  --brand-faint: #c6cfff;
+  --brand-subtle: #a1aff7;
+  --brand-muted: #4d87e7;
+  --brand-dark: #0d2189;
+  --brand-darker: #000a40;
+  --secondary-accent: #9f9672;
+  --secondary-accent2x: #89805d;
+  --secondary-dark: #f4f1e7;
+  --secondary-darker: #efebdc;
+  --secondary-darkest: #e5e0cd;
+  --secondary-default: #faf7ec;
+  --secondary-faint: #fffdf5;
+  --secondary-fainter: #fffefa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-50: #fafafa;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  --gray-950: #0a0a0a;
+  --black: #000000;
+  --white: #ffffff;
+  --accent-yellow-light: #fef3c7;
+  --accent-yellow-dark: #92400e;
+  --accent-skyblue-light: #dbeafe;
+  --accent-skyblue-dark: #1e40af;
+  --accent-green: #50b40a;
+  --accent-red: #d32f2f;
+  --accent-darkgreen-dark: #065f46;
+  --accent-darkgreen-light: #d1fae5;
+  --accent-purple-dark: #5b21b6;
+  --accent-purple-light: #ede9fe;
+  --accent-pink-dark: #9d174d;
+  --accent-pink-light: #fce7f3;
+  --accent-maroon-dark: #991b1b;
+  --accent-maroon-light: #fee2e2;
+  --dark-accent-skyblue-dark: #243876;
+  --dark-accent-skyblue-light: #a5cafd;
+  --dark-accent-maroon-dark: #771d1d;
+  --dark-accent-maroon-light: #f8b4b3;
+  --dark-accent-green-dark: #014737;
+  --dark-accent-green-light: #77d1ae;
+  --dark-accent-yellow-dark: #623112;
+  --dark-accent-yellow-light: #faca16;
+  --dark-accent-purple-dark: #4a1d96;
+  --dark-accent-purple-light: #bfb1f4;
+  --dark-accent-pink-dark: #751a3d;
+  --dark-accent-pink-light: #f8b4d9;
+}
+
+/* Svelte Shim: connect existing vars using in old svelte code to current vars */
+:root {
+  --background: var(--secondary-default);
+  --accent: var(--brand-default);
+  --accent-background: var(--brand-default);
+}
+
+button {
+  font-family: SuisseIntlMono;
+}
+
+/* Typography */
+:root {
+  /* Web-safe fonts for fallback and font-display: swap for better performance */
+  --font-family-monospace: 'SuisseIntlMono', monospace;
+  --font-family-sans: 'ABCDiatype', 'Trebuchet MS', sans-serif;
+  --font-family-serif: 'Reckless', Georgia, serif;
+  --text-light-default: #111827;
+  --text-light-muted: #6b7280;
+  --text-light-subtle: #9ca3af;
+  --text-light-faint: #e5e7eb;
+  --text-light-link: #1f40ed;
+  --text-dark-default: #e5e7eb;
+  --text-dark-muted: #d1d5db;
+  --text-dark-subtle: #9ca3af;
+  --text-dark-faint: #6b7280;
+  --text-dark-link: #a1aff7;
+}
+
+:root {
+  --border-default: var(--gray-300);
+  --border-radius-default: 2px;
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+}
+
+/* ABCDiatype, used for body text */
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 200;
+  src: url(/writing/writing/font/ABCDiatype-Thin.otf) format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 300;
+  src: url(/writing/fonts/ABCDiatype-Light.otf) format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 400;
+  src: url(/writing/fonts/ABCDiatype-Regular.otf) format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 500;
+  src: url(/writing/fonts/ABCDiatype-Medium.otf) format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 700;
+  src: url(/writing/fonts/ABCDiatype-Bold.otf) format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 800;
+  src: url(/writing/fonts/ABCDiatype-Heavy.otf) format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCDiatype';
+  font-weight: 900;
+  src: url(/writing/fonts/ABCDiatype-Ultra.otf) format('opentype');
+  font-display: swap;
+}
+
+/* Reckless, used for headings */
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 200;
+  src: url(/writing/fonts/RecklessTRIAL-Thin.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 300;
+  src: url(/writing/fonts/RecklessTRIAL-Light.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 400;
+  src: url(/writing/fonts/RecklessTRIAL-Regular.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 500;
+  src: url(/writing/fonts/RecklessTRIAL-Medium.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 600;
+  src: url(/writing/fonts/RecklessTRIAL-SemiBold.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 700;
+  src: url(/writing/fonts/RecklessTRIAL-Bold.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless';
+  font-weight: 800;
+  src: url(/writing/fonts/RecklessTRIAL-Heavy.woff2) format('woff2');
+  font-display: swap;
+}
+
+/* Suisse Int'l Mono, used for monospace */
+@font-face {
+  font-family: 'SuisseIntlMono';
+  font-weight: 200;
+  src: url(/writing/fonts/SuisseIntlMono-Thin-WebTrial.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseIntlMono';
+  font-weight: 400;
+  src: url(/writing/font/SuisseIntlMono-Regular-WebTrial.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseIntlMono';
+  font-weight: 700;
+  src: url(/writing/font/SuisseIntlMono-Bold-WebTrial.woff2) format('woff2');
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  background: var(--secondary-default, #fffbea);
+  font-family: --var(font-family-sans, 'sans-serif');
+  font-weight: 400;
+  color: var(--text-light-default, #111827);
+}
+
+main {
+  background-color: var(--background);
+  color: var(--black, #000000);
+  min-height: 400px;
+  font-family: var(--font-family-sans, 'sans-serif');
+}
+
+body {
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+p {
+  font-family: var(--font-family-sans);
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+  margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-serif);
+  font-weight: 500;
+  margin: 0;
+}
