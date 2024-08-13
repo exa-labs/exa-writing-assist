@@ -12,7 +12,7 @@ export default async function callExaSearcher(conversationState: string) {
         exaQuery,
         {
           type: "neural",
-          useAutoprompt: true,
+          useAutoprompt: false,
           numResults: 10,
           highlights: {
             numSentences: 1,
