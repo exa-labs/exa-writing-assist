@@ -1,7 +1,7 @@
 "use server";
 
-import OpenAI from "openai";
-const openai = new OpenAI();
+// import OpenAI from "openai";
+// const openai = new OpenAI();
 
 const systemPrompt = `You are an essay-completion bot that continues/completes a sentence given some input stub of an essay/prose. You only complete 1-2 SHORT sentence MAX. If you get an input of a half sentence or similar, DO NOT repeat any of the preceding text of the prose. THIS MEANS DO NOT INCLUDE THE STARTS OF INCOMPLETE SENTENCES IN YOUR RESPONSE. This is also the case when there is a spelling, punctuation, capitalization or other error in the starter stub - e.g.:
 
@@ -37,7 +37,7 @@ async function callClaude(exaResults: string, conversationState: string) {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20240620',
+        model: 'claude-3-7-sonnet-latest',
         max_tokens: 200,
         system: systemPrompt,
         messages: [
