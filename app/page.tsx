@@ -15,6 +15,43 @@ export default function Home() {
   const [startGenerating, setStartGenerating] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  // Helper function to remove duplicated text from the beginning of the response.
+  // The LLM sometimes repeats part of the input text despite instructions not to.
+  // This function detects overlapping text between the end of the current content
+  // and the beginning of the response, then removes the duplicate.
+  const removeDuplicatedPrefix = useCallback(
+    (currentText: string, responseText: string): string => {
+      if (!currentText || !responseText) return responseText;
+
+      // Strip HTML tags for comparison
+      const stripHtml = (html: string) =>
+        html.replace(/<[^>]*>/g, "").trim();
+      const cleanCurrent = stripHtml(currentText);
+      const cleanResponse = stripHtml(responseText);
+
+      // Find the longest suffix of currentText that matches a prefix of responseText
+      // Check up to the last 100 characters of the current text
+      const maxOverlapLength = Math.min(100, cleanCurrent.length);
+      let longestOverlap = 0;
+
+      for (let i = 1; i <= maxOverlapLength; i++) {
+        const suffix = cleanCurrent.slice(-i).toLowerCase();
+        const prefix = cleanResponse.slice(0, i).toLowerCase();
+        if (suffix === prefix) {
+          longestOverlap = i;
+        }
+      }
+
+      // If we found an overlap, remove it from the response
+      if (longestOverlap > 0) {
+        return responseText.slice(longestOverlap).trimStart();
+      }
+
+      return responseText;
+    },
+    []
+  );
+
   const generateText = useCallback(
     async (currentWritingState) => {
       if (isGenerating || !currentWritingState) return;
@@ -28,7 +65,12 @@ export default function Home() {
           exaSearchResults,
           currentWritingState
         );
-        setWritingState((prev) => prev + " " + response.text);
+        // Remove any duplicated text from the beginning of the response
+        const cleanedResponse = removeDuplicatedPrefix(
+          currentWritingState,
+          response.text
+        );
+        setWritingState((prev) => prev + " " + cleanedResponse);
       } catch (error) {
         console.error("Error in generateText:", error);
       } finally {
@@ -36,7 +78,7 @@ export default function Home() {
         setStartGenerating(false);
       }
     },
-    [isGenerating]
+    [isGenerating, removeDuplicatedPrefix]
   );
 
   const handleStartTrigger = useCallback(() => {
